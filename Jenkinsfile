@@ -13,6 +13,9 @@ node {
   }
   
   stage('Scan') {
+    environment {
+      MICROSCANNER_OPTIONS = "--continue-on-failure /usr/local/bin/scan.sh ${USERNAME}/demo-api:latest"
+    }
     withCredentials([
         string(credentialsId: 'microscanner-token',
                variable: 'MICROSCANNER_TOKEN'),
